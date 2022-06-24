@@ -1,6 +1,6 @@
 {
-  "name": "build-runner",
-  "displayName": "Build Runner",
+  "name": "build-runner-fvm",
+  "displayName": "FVM Build Runner",
   "description": "Easily run build_runner commands!",
   "publisher": "gaetschwartz",
   "version": "0.8.0",
@@ -40,7 +40,8 @@
           "type": "string",
           "enum": [
             "flutter",
-            "dart"
+            "dart",
+            "fvm"
           ],
           "default": "flutter",
           "markdownDescription": "Choose which command to use to run `build_runner` commands."

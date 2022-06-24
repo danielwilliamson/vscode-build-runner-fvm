@@ -1,12 +1,13 @@
 
 import * as vscode from 'vscode';
-export type DartFlutterCommand = "flutter" | "dart";
+export type DartFlutterCommand = "flutter" | "dart" | "fvm";
 
 export function pubCommand(shellCommand: DartFlutterCommand): string[] {
   switch (shellCommand) {
     case "dart":
       return ["run"];
     case "flutter":
+    case "fvm":
       return ["pub", "run"];
   }
 }
@@ -17,6 +18,9 @@ export function command(shellCommand: DartFlutterCommand): string {
       return batchCommand("dart");
     case "flutter":
       return settings.flutterPath ?? batchCommand("flutter");
+      case "fvm":
+      const workspacePath = vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor?.document.uri!)?.uri.path;
+      return batchCommand(`${workspacePath}/.fvm/flutter_sdk/bin/flutter`);
   }
 }
 
